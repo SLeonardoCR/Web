@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-lg-4">
+    <div class="list-group">
+      <a href="#" class="list-group-item list-group-item-action">Piano App</a>
+
+      <a (click)="aplicarSonido(1)" class="list-group-item list-group-item-action">C</a>
+      <a (click)="aplicarSonido(2)" class="list-group-item list-group-item-action list-group-item-primary">D</a>
+      <a (click)="aplicarSonido(3)" class="list-group-item list-group-item-action list-group-item-secondary">E</a>
+      <a (click)="aplicarSonido(4)" class="list-group-item list-group-item-action list-group-item-success">F</a>
+      <a (click)="aplicarSonido(5)" class="list-group-item list-group-item-action list-group-item-danger">G</a>
+      <a (click)="aplicarSonido(6)" class="list-group-item list-group-item-action list-group-item-warning">A</a>
+      <a (click)="aplicarSonido(7)" class="list-group-item list-group-item-action list-group-item-info">B</a>
+    </div>
+  </div>
+</div>
+
+<audio controls>
+  <source src="../assets/sonidos/a.mp3" type="audio/mpeg">Your Browser Doesn't Support
+  The Audio Element
+</audio>
