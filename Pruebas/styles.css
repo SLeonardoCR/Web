@@ -1,0 +1,33 @@
+html, body{
+	height: 100%;
+	margin: 0;
+	background-color: rgb(215, 215, 215);
+}
+.fondoItem h5 {
+	text-align: center;
+  }  
+.text-center{
+	text-align: center;
+	float: center;
+}
+h1{
+	text-align: center;
+	font-family: 'Ubuntu', sans-serif;
+    color: rgb(74, 74, 74);
+    text-align: center;
+	margin: 20px;
+}
+img{
+	text-align: center;
+	width: 100px;
+	height: 100px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+	border-radius: 5px;
+}
+.fondoItem{
+	background-color: rgb(255, 255, 255);
+	border-radius: 5px;
+	text-align: center;
+}

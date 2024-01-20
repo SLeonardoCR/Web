@@ -1,0 +1,103 @@
+<div>
+  <label>
+    <h5>Haber</h5>
+    <select class="form-select" [(ngModel)]="restarCuenta.cuenta1">
+      <option value="">Selecciona una cuenta</option>
+      <option *ngFor="let cuenta of cuentasTipoPasivo()" [value]="cuenta.nombre">{{ cuenta.nombre }}</option>
+    </select>
+  </label>
+  <label>
+    <h5>Debe</h5>
+    <select class="form-select" [(ngModel)]="restarCuenta.cuenta2">
+      <option value="">Selecciona una cuenta</option>
+      <option *ngFor="let cuenta of cuentasTipoActivo()" [value]="cuenta.nombre">{{ cuenta.nombre }}</option>
+    </select>
+  </label>
+  <label>
+    <h5>Movimiento</h5>
+    <input type="number" class="form-control" name="movimiento" [(ngModel)]="restarCuenta.cantidad">
+  </label>
+  <label>
+    <button type="button" class="btn btn-primary" (click)="restarCuentas()">Commit</button>
+  </label>
+  <h5>{{estadoCuentas}}</h5>
+</div>
+
+<button type="button" class="btn btn-primary" (click)="mostrarFormulario('agregar')">Agregar nueva cuenta</button>
+<div *ngIf="mostrarAgregar">
+  <form (submit)="agregarCuenta()">
+    <label>
+      <h5>Número de cuenta:</h5>
+      <input type="text" [(ngModel)]="nuevaCuenta.numero" name="numero" class="form-control">
+    </label>
+    <label>
+      <h5>Tipo de cuenta:</h5>
+      <select class="form-select" [(ngModel)]="nuevaCuenta.tipo" name="tipo" type="text">
+        <option value="">Selecciona tipo</option>
+        <option value="Activo">Activo</option>
+        <option value="Pasivo">Pasivo</option>
+        <option value="Capital">Capital</option>
+      </select>
+    </label>
+    <label>
+      <h5>Nombre de cuenta:</h5>
+      <input type="text" [(ngModel)]="nuevaCuenta.nombre" name="tipo" class="form-control">
+    </label>
+    <label>
+      <h5>Cantidad:</h5>
+      <input type="number" [(ngModel)]="nuevaCuenta.cantidad" name="cantidad" class="form-control">
+    </label>
+    <button type="button" class="btn btn-primary" type="submit">Agregar</button>
+  </form>
+</div>
+
+<button type="button" class="btn btn-primary" (click)="mostrarFormulario('editar')">Editar cuenta</button>
+<div *ngIf="mostrarEditar">
+  <form (submit)="editarCuenta()">
+    <label>
+      <h5>Número de cuenta:</h5>
+      <select class="form-select" [(ngModel)]="editarContenidoCuenta.numero" name="tipo" type="text">
+        <option value="">Selecciona cuenta</option>
+        <option *ngFor="let cuenta of cuentas" [value]="cuenta.numero">{{ cuenta.numero }}</option>
+      </select>
+    </label>
+    <label>
+      <h5>Tipo de cuenta:</h5>
+      <select class="form-select" [(ngModel)]="editarContenidoCuenta.tipo" name="tipo" type="text">
+        <option value="">Selecciona tipo</option>
+        <option value="Activo">Activo</option>
+        <option value="Pasivo">Pasivo</option>
+        <option value="Capital">Capital</option>
+      </select>
+    </label>
+    <label>
+      <h5>Nombre de cuenta:</h5>
+      <input type="text" [(ngModel)]="editarContenidoCuenta.nombre" name="tipo" class="form-control">
+    </label>
+    <label>
+      <h5>Cantidad:</h5>
+      <input type="number" [(ngModel)]="editarContenidoCuenta.cantidad" name="cantidad" class="form-control">
+    </label>
+    <button type="button" class="btn btn-primary" type="submit">Editar</button>
+  </form>
+</div>
+
+<table class="table-1">
+  <thead>
+    <tr>
+      <th>Número</th>
+      <th>Tipo</th>
+      <th>Nombre</th>
+      <th>Cantidad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cuenta of cuentas; let i=index">
+      <td>{{ cuenta.numero }}</td>
+      <td>{{ cuenta.tipo }}</td>
+      <td>{{ cuenta.nombre }}</td>
+      <td>{{ cuenta.cantidad }}</td>
+      <span class="cursor text-danger" (click)="eliminarCuenta(i)"><i class="fa-solid fa-trash"></i></span>
+    </tr>
+  </tbody>
+</table>
